@@ -373,18 +373,13 @@ static char *hex(const unsigned char *bytes, size_t length) {
 /* b3sum's portable check-file escaping: prefix a backslash when escaped. */
 static char *display_path(const char *path) {
     size_t n = strlen(path), extra = 0;
-    bool escaped = false;
     for (size_t i = 0; i < n; ++i) {
         if (path[i] == '\\' || path[i] == '\n' || path[i] == '\r') {
             ++extra;
-            escaped = true;
         }
     }
-    char *out = xmalloc(n + extra + (escaped ? 2 : 1));
+    char *out = xmalloc(n + extra + 1);
     char *at = out;
-    if (escaped) {
-        *at++ = '\\';
-    }
     for (size_t i = 0; i < n; ++i) {
         if (path[i] == '\\') {
             *at++ = '\\';
@@ -416,6 +411,10 @@ static int print_result(const Result *result, const Options *options) {
             return 1;
         }
     } else {
+        bool escaped = strchr(result->path, '\\') || strchr(result->path, '\n') || strchr(result->path, '\r');
+        if (escaped) {
+            fputc('\\', stdout);
+        }
         char *digest = hex(result->digest, options->length);
         if (options->tag) {
             printf("BLAKE3 (%s) = %s\n", path, digest);
