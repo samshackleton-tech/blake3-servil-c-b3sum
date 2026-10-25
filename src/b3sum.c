@@ -620,7 +620,7 @@ static char *unescape_path(const char *text) {
     return out;
 }
 
-static int parse_check_line(const char *line, char **path, unsigned char expected[32]) {
+static int parse_check_line(const char *line, char **path, char **display, unsigned char expected[32]) {
     size_t n = strlen(line);
     while (n && (line[n - 1] == '\n' || line[n - 1] == '\r')) {
         --n;
@@ -671,8 +671,15 @@ static int parse_check_line(const char *line, char **path, unsigned char expecte
     memcpy(copy, path_start, path_len);
     copy[path_len] = '\0';
     *path = escaped ? unescape_path(copy) : xstrdup(copy);
+    *display = xmalloc(strlen(copy) + 2);
+    sprintf(*display, "%s%s", escaped ? "\\" : "", copy);
     free(copy);
-    return *path ? 0 : 1;
+    if (!*path) {
+        free(*display);
+        *display = NULL;
+        return 1;
+    }
+    return 0;
 }
 
 static int check_stream(FILE *file, const Options *options) {
@@ -687,8 +694,9 @@ static int check_stream(FILE *file, const Options *options) {
             continue;
         }
         char *path = NULL;
+        char *display = NULL;
         unsigned char expected[32];
-        if (parse_check_line(line, &path, expected) != 0) {
+        if (parse_check_line(line, &path, &display, expected) != 0) {
             fprintf(stderr, PROGRAM ": invalid check line\n");
             ++failures;
             continue;
@@ -696,18 +704,19 @@ static int check_stream(FILE *file, const Options *options) {
         Result result = {0};
         int failed = hash_path(path, options, &result);
         if (failed || memcmp(expected, result.digest, 32) != 0) {
-            printf("%s: FAILED\n", path);
+            printf("%s: FAILED\n", display);
             ++failures;
             if (result.error) {
                 fprintf(stderr, PROGRAM ": %s: %s\n", path, result.error);
             }
         } else if (!options->quiet) {
-            printf("%s: OK\n", path);
+            printf("%s: OK\n", display);
         }
         free(result.path);
         free(result.digest);
         free(result.error);
         free(path);
+        free(display);
     }
     free(line);
     if (ferror(file)) {
