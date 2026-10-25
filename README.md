@@ -76,6 +76,16 @@ make test
 make test OFFICIAL_B3SUM=/path/to/b3sum
 ```
 
+**Which library is used:** the example links only BLAKE3-Servil's C API
+(`libb3_servil`, built from the submodule). The official `b3sum` is a
+separate reference program: the tests run it beside the example and compare
+outputs, but it is never linked in. `tests/check_linkage.py`, run first by
+`make test`, checks this in the binaries themselves: the shared build needs
+`libb3_servil.so` from `build/servil/lib`, the static build contains the
+`b3_*` entry points and needs no `libb3_servil`, neither links or defines
+official BLAKE3's `blake3_hasher_*` C API, and both report
+`BLAKE3-Servil 0.8.0`.
+
 The test script runs the shared and static executables independently and
 compares their behavior with the independent `b3sum` on PATH. It covers:
 

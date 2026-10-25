@@ -24,6 +24,7 @@ $(STATIC_BIN): src/b3sum.c Makefile | servil
 OFFICIAL_B3SUM ?= b3sum
 
 test: all
+	python3 tests/check_linkage.py --bin $(BIN) --static-bin $(STATIC_BIN) --lib-dir $(PREFIX)/lib
 	python3 tests/test_b3sum.py --bin $(BIN) --static-bin $(STATIC_BIN) --official $(OFFICIAL_B3SUM)
 
 benchmark: all
