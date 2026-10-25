@@ -1,0 +1,122 @@
+    Updating git repository `https://github.com/johnservil/BLAKE3`
+     Locking 1 package to highest compatible version
+      Adding blake3-servil v0.3.0+2e4fa821f9db07b945dbb2b0d02eb76cb19617b5 (https://github.com/johnservil/BLAKE3?rev=b94e2fac72b8be346e8c012c6a749caa134e2480#b94e2fac)
+   Compiling shlex v2.0.1
+   Compiling find-msvc-tools v0.1.11
+   Compiling typenum v1.20.1
+   Compiling cfg-if v1.0.4
+   Compiling version_check v0.9.5
+   Compiling proc-macro2 v1.0.107
+   Compiling crossbeam-utils v0.8.23
+   Compiling quote v1.0.47
+   Compiling libc v0.2.189
+   Compiling unicode-ident v1.0.26
+   Compiling crossbeam-epoch v0.9.21
+   Compiling rayon-core v1.13.0
+   Compiling crossbeam-deque v0.8.8
+   Compiling ref-cast v1.0.27
+   Compiling cpufeatures v0.3.0
+   Compiling constant_time_eq v0.4.2
+   Compiling const-oid v0.9.6
+   Compiling arrayvec v0.7.8
+   Compiling smallvec v1.16.2
+   Compiling binary-merge v0.1.2
+   Compiling cpufeatures v0.2.17
+   Compiling self_cell v1.3.0
+   Compiling rand_core v0.9.5
+   Compiling once_cell v1.21.4
+   Compiling untrusted v0.9.0
+   Compiling bytes v1.12.1
+   Compiling clocks v0.1.0 (https://github.com/johnservil/BLAKE3?rev=b94e2fac72b8be346e8c012c6a749caa134e2480#b94e2fac)
+   Compiling keccak v0.2.2
+   Compiling cc v1.4.4
+   Compiling generic-array v0.14.7
+   Compiling wyhash v0.6.0
+   Compiling inplace-vec-builder v0.1.1
+   Compiling syn v3.0.6
+   Compiling hybrid-array v0.4.15
+   Compiling blake3 v1.8.7
+   Compiling ring v0.17.14
+   Compiling blake3-servil v0.3.0+2e4fa821f9db07b945dbb2b0d02eb76cb19617b5 (https://github.com/johnservil/BLAKE3?rev=b94e2fac72b8be346e8c012c6a749caa134e2480#b94e2fac)
+   Compiling positioned-io v0.3.5
+   Compiling getrandom v0.2.17
+   Compiling sysinfo v0.30.13
+   Compiling crypto-common v0.2.2
+   Compiling block-buffer v0.12.1
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling digest v0.10.7
+   Compiling sha1 v0.10.7
+   Compiling sha1-checked v0.10.0
+   Compiling bench-hashes v0.17.0+1b480eed20d11d7cd1417384e4a9d540b0e321be (/root/bench-hashes-round-152)
+   Compiling digest v0.11.3
+   Compiling sha2 v0.11.0
+   Compiling sha3 v0.11.0
+   Compiling ref-cast-impl v1.0.27
+   Compiling range-collections v0.4.6
+   Compiling bao-tree v0.16.1
+    Finished `release` profile [optimized] target(s) in 21.14s
+     Running `/root/bench-hashes-round-152/target/release/bench-hashes b3sum --rounds 4 --quick example=/root/blake3-servil-c-b3sum/build/b3sum-c official=/root/results/released-cli-v7/bin/b3sum-official-1.8.2-L0`
+bench-hashes b3sum: making the input files in b3sum-files (kept for later runs)
+bench-hashes b3sum: round 1 of 4 done, 0 s
+bench-hashes b3sum: round 2 of 4 done, 1 s
+bench-hashes b3sum: round 3 of 4 done, 1 s
+bench-hashes b3sum: round 4 of 4 done, 2 s
+clocks: other programs kept 1.37 CPUs busy from 2.0 s to 2.5 s; measurements in that time may read slower than this machine runs
+# Map (HTML) is in "benchmark-results/AMDEPYC925524CoreProcessor.linux70038generic/bench-hashes.map.html" .
+bench-hashes b3sum: how long b3sum takes to hash files, from its start to its exit
+
+machine:   AMD EPYC 9255 24-Core Processor, 48 CPUs, linux7.0.0-38-generic
+files on:  ext4 (/dev/md0 on /)
+load:      busy: other programs kept 0.67 CPUs busy on average, 1.37 in the busiest window; busy in 1 of 3 windows (2.0-2.5 s)
+runs:      4 rounds, each contender once on each input in each (--quick: a check, not a record)
+
+contenders:
+  example        /root/blake3-servil-c-b3sum/build/b3sum-c    (b3sum-c 0.1.0 (BLAKE3-Servil 0.8.0), blake3 9b1f60c6fb23fede)
+  official       /root/results/released-cli-v7/bin/b3sum-official-1.8.2-L0    (b3sum 1.8.2, blake3 a1b4b8dbce7bdbb6)
+
+Files in the page cache (warm: read moments before)
+mean time per run, lower is better; xN: against example, the ratio judged (the geometric mean of the rounds' ratios), marked slower or faster where the rounds' pairs say so (every cell judged at once, beyond 3%)
+input                          example               official
+4 KiB                          598 us                1.65 ms x2.761 slower
+1 MiB                          715 us 1.47 GB/s      1.84 ms 0.568 GB/s x2.581 slower
+16 MiB                         1.65 ms 10.2 GB/s     2.59 ms 6.49 GB/s x1.601 slower
+100 x 16 KiB                   2.63 ms 0.622 GB/s    2.48 ms 0.661 GB/s x0.941
+100 x 16 KiB, a process each   50.4 ms 0.0325 GB/s   162 ms 0.0101 GB/s x3.212 slower
+mixed tree, 100 files, 5 MiB   2.95 ms 1.68 GB/s     3.86 ms 1.28 GB/s x1.311 slower
+4 x 16 MiB                     3.26 ms 20.6 GB/s     5.22 ms 12.9 GB/s x1.587 slower
+
+CPUs busy (CPU time over wall time) and peak memory, medians
+input                          example              official
+4 KiB                          1.02 CPUs, 5 MiB     5.09 CPUs, 5 MiB
+1 MiB                          2.53 CPUs, 5 MiB     9.04 CPUs, 5 MiB
+16 MiB                         7.33 CPUs, 15 MiB    10.61 CPUs, 13 MiB
+100 x 16 KiB                   4.45 CPUs, 5 MiB     3.96 CPUs, 5 MiB
+100 x 16 KiB, a process each   1.03 CPUs, 5 MiB     5.31 CPUs, 5 MiB
+mixed tree, 100 files, 5 MiB   7.74 CPUs, 5 MiB     18.70 CPUs, 5 MiB
+4 x 16 MiB                     14.21 CPUs, 34 MiB   15.97 CPUs, 13 MiB
+
+Files read from storage (cold: evicted from the page cache before each run)
+mean time per run, lower is better; xN: against example, the ratio judged (the geometric mean of the rounds' ratios), marked slower or faster where the rounds' pairs say so (every cell judged at once, beyond 3%)
+input                          example               official
+4 KiB                          658 us                1.74 ms x2.654 slower
+1 MiB                          1.22 ms 0.858 GB/s    2.18 ms 0.481 GB/s x1.782 slower
+16 MiB                         4.60 ms 3.65 GB/s     5.64 ms 2.98 GB/s x1.225 slower
+100 x 16 KiB                   3.16 ms 0.519 GB/s    9.20 ms 0.178 GB/s x2.909 slower
+100 x 16 KiB, a process each   58.8 ms 0.0279 GB/s   169 ms 0.00968 GB/s x2.880 slower
+mixed tree, 100 files, 5 MiB   3.97 ms 1.24 GB/s     8.72 ms 0.566 GB/s x2.193 slower
+4 x 16 MiB                     12.3 ms 5.45 GB/s     19.9 ms 3.37 GB/s x1.617 slower
+
+CPUs busy (CPU time over wall time) and peak memory, medians
+input                          example              official
+4 KiB                          1.48 CPUs, 5 MiB     5.12 CPUs, 5 MiB
+1 MiB                          4.48 CPUs, 5 MiB     11.08 CPUs, 5 MiB
+16 MiB                         22.93 CPUs, 8 MiB    18.90 CPUs, 11 MiB
+100 x 16 KiB                   6.48 CPUs, 5 MiB     1.09 CPUs, 5 MiB
+100 x 16 KiB, a process each   1.45 CPUs, 5 MiB     5.07 CPUs, 5 MiB
+mixed tree, 100 files, 5 MiB   11.24 CPUs, 5 MiB    10.76 CPUs, 5 MiB
+4 x 16 MiB                     28.62 CPUs, 27 MiB   25.05 CPUs, 12 MiB
+
+Every cold run read its files from storage (by the counts).
+bench-hashes b3sum: report, samples, and map in benchmark-results/AMDEPYC925524CoreProcessor.linux70038generic
+benchmark results and provenance: /root/results/c-b3sum-example/benchmark

@@ -1,0 +1,166 @@
+# bench-hashes samples v7
+# timestamp: 2026-10-25 17:35:47 UTC
+# bench-hashes version: 0.17.0+1b480eed20d11d7cd1417384e4a9d540b0e321be
+# bench-hashes source: https://github.com/johnservil/bench-hashes
+# git commit: d6ce88f6537a7fbd11ab9533853818b4adaf4824
+# git clean status: clean
+# dependency lock: blake3 508380b48c41c92fed979ba2a639c81df1eb63117b369c4004cea5c1fa11b59b of Cargo.lock
+# rust compiler: rustc 1.99.1 (58cf8f9c3 2026-10-13)
+# c compiler: cc: cc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+# rustflags: none
+# build target: x86_64-unknown-linux-gnu
+# target features: fxsr,sse,sse2
+# sample clock: std::time::Instant → CLOCK_MONOTONIC (stops during suspend, NTP slew only)
+# cpu type: AMD EPYC 9255 24-Core Processor
+# cpu count: 48
+# os type: linux7.0.0-38-generic
+# cpu identity: model name: AMD EPYC 9255 24-Core Processor · microcode: 0xb00215a · flags: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpuid_fault cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd amd_ppin cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d debug_swap amd_lbr_pmc_freeze · machine: PIO-2115GT-HNTR-NODE
+# files: /root/results/c-b3sum-example/benchmark-quiet/b3sum-files on ext4 (/dev/md0 on /)
+# rounds: 4
+# contender: example: /root/blake3-servil-c-b3sum/build/b3sum-c  (blake3 9b1f60c6fb23fede0a738c292e242f97a4959e405a2fcf038cce61a1b79f5795; b3sum-c 0.1.0 (BLAKE3-Servil 0.8.0))
+# contender: official: /root/results/released-cli-v7/bin/b3sum-official-1.8.2-L0  (blake3 a1b4b8dbce7bdbb6525266dd2b71a63a21d62010fcdb80a442b6792b69a2222f; b3sum 1.8.2)
+# power: mains power, no battery, CPU frequency governor performance, energy-performance preference performance
+# load: quiet: other programs kept 0.33 CPUs busy on average, 0.58 in the busiest window
+# load windows (start ms-end ms:other milli-CPUs:steal milli-CPUs): 0-1000:289:0,1000-2000:242:0,2000-2533:583:0
+# counts	contender	cache	input	round	wall_ns	cpu_ns	max_rss_bytes	storage_read_bytes	major_faults	p_cycles	e_cycles	p_time_ns	e_time_ns
+# counts	example	warm	4 KiB	0	629592	633000	5124096	0	0	-	-	-	-
+# counts	example	warm	4 KiB	1	602102	610000	5124096	0	0	-	-	-	-
+# counts	example	warm	4 KiB	2	596012	610000	5124096	0	0	-	-	-	-
+# counts	example	warm	4 KiB	3	612272	626000	5124096	0	0	-	-	-	-
+# counts	official	warm	4 KiB	0	1744577	8449000	5124096	0	0	-	-	-	-
+# counts	official	warm	4 KiB	1	1670526	9312000	5124096	0	0	-	-	-	-
+# counts	official	warm	4 KiB	2	1734946	9225000	5124096	0	0	-	-	-	-
+# counts	official	warm	4 KiB	3	1685706	8486000	5124096	0	0	-	-	-	-
+# counts	example	warm	1 MiB	0	726322	1718000	5124096	0	0	-	-	-	-
+# counts	example	warm	1 MiB	1	746173	1864000	5124096	0	0	-	-	-	-
+# counts	example	warm	1 MiB	2	859003	2215000	5124096	0	0	-	-	-	-
+# counts	example	warm	1 MiB	3	696643	1707000	5124096	0	0	-	-	-	-
+# counts	official	warm	1 MiB	0	1918307	19704000	5124096	0	15	-	-	-	-
+# counts	official	warm	1 MiB	1	1829767	15963000	5124096	0	0	-	-	-	-
+# counts	official	warm	1 MiB	2	1854566	17066000	5124096	0	0	-	-	-	-
+# counts	official	warm	1 MiB	3	1839176	17470000	5124096	0	0	-	-	-	-
+# counts	example	warm	16 MiB	0	1136524	6894000	18190336	0	1	-	-	-	-
+# counts	example	warm	16 MiB	1	1847937	14872000	14569472	0	0	-	-	-	-
+# counts	example	warm	16 MiB	2	2059657	19955000	14856192	0	0	-	-	-	-
+# counts	example	warm	16 MiB	3	1824506	14963000	15659008	0	0	-	-	-	-
+# counts	official	warm	16 MiB	0	2223408	28272000	19214336	0	9	-	-	-	-
+# counts	official	warm	16 MiB	1	3027311	34949000	13332480	0	0	-	-	-	-
+# counts	official	warm	16 MiB	2	2671850	26299000	12910592	0	0	-	-	-	-
+# counts	official	warm	16 MiB	3	2748900	30328000	12378112	0	0	-	-	-	-
+# counts	example	warm	100 x 16 KiB	0	2816550	21043000	5124096	0	0	-	-	-	-
+# counts	example	warm	100 x 16 KiB	1	2657339	14649000	5124096	0	0	-	-	-	-
+# counts	example	warm	100 x 16 KiB	2	2896850	16329000	5124096	0	0	-	-	-	-
+# counts	example	warm	100 x 16 KiB	3	2902601	32939000	5124096	0	0	-	-	-	-
+# counts	official	warm	100 x 16 KiB	0	2481249	9756000	5124096	0	0	-	-	-	-
+# counts	official	warm	100 x 16 KiB	1	2510379	9927000	5124096	0	0	-	-	-	-
+# counts	official	warm	100 x 16 KiB	2	2425438	9661000	5124096	0	0	-	-	-	-
+# counts	official	warm	100 x 16 KiB	3	2441109	10468000	5124096	0	0	-	-	-	-
+# counts	example	warm	100 x 16 KiB, a process each	0	50145378	51398000	5124096	0	0	-	-	-	-
+# counts	example	warm	100 x 16 KiB, a process each	1	51159457	52071000	5124096	0	0	-	-	-	-
+# counts	example	warm	100 x 16 KiB, a process each	2	50077449	51314000	5124096	0	0	-	-	-	-
+# counts	example	warm	100 x 16 KiB, a process each	3	50723556	51993000	5124096	0	0	-	-	-	-
+# counts	official	warm	100 x 16 KiB, a process each	0	160272374	845722000	5124096	0	0	-	-	-	-
+# counts	official	warm	100 x 16 KiB, a process each	1	160601825	845824000	5124096	0	0	-	-	-	-
+# counts	official	warm	100 x 16 KiB, a process each	2	162296435	853270000	5124096	0	0	-	-	-	-
+# counts	official	warm	100 x 16 KiB, a process each	3	162526065	856959000	5124096	0	0	-	-	-	-
+# counts	example	warm	mixed tree, 100 files, 5 MiB	0	2715180	12818000	5124096	0	0	-	-	-	-
+# counts	example	warm	mixed tree, 100 files, 5 MiB	1	2967180	19522000	5124096	0	0	-	-	-	-
+# counts	example	warm	mixed tree, 100 files, 5 MiB	2	3046770	37146000	5124096	0	0	-	-	-	-
+# counts	example	warm	mixed tree, 100 files, 5 MiB	3	2840500	23449000	5124096	0	0	-	-	-	-
+# counts	official	warm	mixed tree, 100 files, 5 MiB	0	3829734	65939000	5124096	0	35	-	-	-	-
+# counts	official	warm	mixed tree, 100 files, 5 MiB	1	3895174	73248000	5124096	0	0	-	-	-	-
+# counts	official	warm	mixed tree, 100 files, 5 MiB	2	4230525	78375000	5124096	0	0	-	-	-	-
+# counts	official	warm	mixed tree, 100 files, 5 MiB	3	3885304	70436000	5124096	0	0	-	-	-	-
+# counts	example	warm	4 x 16 MiB	0	2422069	19321000	48652288	0	5	-	-	-	-
+# counts	example	warm	4 x 16 MiB	1	3813534	49414000	32526336	0	0	-	-	-	-
+# counts	example	warm	4 x 16 MiB	2	4018765	22470000	58507264	0	0	-	-	-	-
+# counts	example	warm	4 x 16 MiB	3	4007664	55331000	33513472	0	0	-	-	-	-
+# counts	official	warm	4 x 16 MiB	0	3423392	59915000	18993152	0	23	-	-	-	-
+# counts	official	warm	4 x 16 MiB	1	6235302	94355000	12713984	0	0	-	-	-	-
+# counts	official	warm	4 x 16 MiB	2	5593840	88234000	14368768	0	0	-	-	-	-
+# counts	official	warm	4 x 16 MiB	3	6009511	89095000	13561856	0	0	-	-	-	-
+# counts	example	cold	4 KiB	0	687953	1026000	5124096	4096	1	-	-	-	-
+# counts	example	cold	4 KiB	1	655863	905000	5124096	4096	1	-	-	-	-
+# counts	example	cold	4 KiB	2	893603	1328000	5124096	4096	1	-	-	-	-
+# counts	example	cold	4 KiB	3	642653	981000	5124096	4096	1	-	-	-	-
+# counts	official	cold	4 KiB	0	1868686	9097000	5124096	4096	0	-	-	-	-
+# counts	official	cold	4 KiB	1	1721856	8360000	5124096	4096	0	-	-	-	-
+# counts	official	cold	4 KiB	2	1825326	8592000	5124096	4096	0	-	-	-	-
+# counts	official	cold	4 KiB	3	1788866	9661000	5124096	4096	0	-	-	-	-
+# counts	example	cold	1 MiB	0	1291455	5605000	5124096	1048576	2	-	-	-	-
+# counts	example	cold	1 MiB	1	1185444	5711000	5124096	1048576	2	-	-	-	-
+# counts	example	cold	1 MiB	2	1301585	5316000	5124096	1048576	2	-	-	-	-
+# counts	example	cold	1 MiB	3	1178604	5768000	5124096	1048576	5	-	-	-	-
+# counts	official	cold	1 MiB	0	2274178	21354000	5124096	1048576	25	-	-	-	-
+# counts	official	cold	1 MiB	1	2236967	24116000	5124096	1048576	24	-	-	-	-
+# counts	official	cold	1 MiB	2	2337539	26435000	5124096	1048576	28	-	-	-	-
+# counts	official	cold	1 MiB	3	2149488	23883000	5124096	1048576	22	-	-	-	-
+# counts	example	cold	16 MiB	0	4876877	92954000	9707520	16777216	201	-	-	-	-
+# counts	example	cold	16 MiB	1	4760597	100515000	8097792	16777216	255	-	-	-	-
+# counts	example	cold	16 MiB	2	4651647	110752000	8097792	16777216	255	-	-	-	-
+# counts	example	cold	16 MiB	3	4830648	111516000	8925184	16777216	247	-	-	-	-
+# counts	official	cold	16 MiB	0	5770101	107844000	11804672	16777216	100	-	-	-	-
+# counts	official	cold	16 MiB	1	5922981	119472000	11530240	16777216	130	-	-	-	-
+# counts	official	cold	16 MiB	2	5433530	83481000	12722176	16777216	81	-	-	-	-
+# counts	official	cold	16 MiB	3	6640414	146561000	11657216	16777216	123	-	-	-	-
+# counts	example	cold	100 x 16 KiB	0	3283431	23455000	5124096	1638400	100	-	-	-	-
+# counts	example	cold	100 x 16 KiB	1	3552803	26775000	5124096	1638400	100	-	-	-	-
+# counts	example	cold	100 x 16 KiB	2	3543482	26913000	5124096	1638400	100	-	-	-	-
+# counts	example	cold	100 x 16 KiB	3	3155781	45468000	5124096	1638400	100	-	-	-	-
+# counts	official	cold	100 x 16 KiB	0	7982888	9049000	5124096	1638400	100	-	-	-	-
+# counts	official	cold	100 x 16 KiB	1	10336267	10526000	5124096	1638400	100	-	-	-	-
+# counts	official	cold	100 x 16 KiB	2	10364327	9211000	5124096	1638400	100	-	-	-	-
+# counts	official	cold	100 x 16 KiB	3	10059056	10767000	5124096	1638400	100	-	-	-	-
+# counts	example	cold	100 x 16 KiB, a process each	0	59111206	86618000	5124096	1638400	100	-	-	-	-
+# counts	example	cold	100 x 16 KiB, a process each	1	58808140	88760000	5124096	1638400	100	-	-	-	-
+# counts	example	cold	100 x 16 KiB, a process each	2	59659795	88827000	5124096	1638400	100	-	-	-	-
+# counts	example	cold	100 x 16 KiB, a process each	3	59130570	88947000	5124096	1638400	100	-	-	-	-
+# counts	official	cold	100 x 16 KiB, a process each	0	165634466	844625000	5124096	1638400	100	-	-	-	-
+# counts	official	cold	100 x 16 KiB, a process each	1	167650576	849237000	5124096	1638400	100	-	-	-	-
+# counts	official	cold	100 x 16 KiB, a process each	2	167513718	869165000	5124096	1638400	100	-	-	-	-
+# counts	official	cold	100 x 16 KiB, a process each	3	167168926	865214000	5124096	1638400	100	-	-	-	-
+# counts	example	cold	mixed tree, 100 files, 5 MiB	0	4478646	51739000	5124096	5029888	211	-	-	-	-
+# counts	example	cold	mixed tree, 100 files, 5 MiB	1	3584283	36591000	5124096	5029888	185	-	-	-	-
+# counts	example	cold	mixed tree, 100 files, 5 MiB	2	3874184	29445000	5124096	5029888	152	-	-	-	-
+# counts	example	cold	mixed tree, 100 files, 5 MiB	3	4157655	42282000	5124096	5029888	165	-	-	-	-
+# counts	official	cold	mixed tree, 100 files, 5 MiB	0	7422486	74344000	5124096	5029888	117	-	-	-	-
+# counts	official	cold	mixed tree, 100 files, 5 MiB	1	11950623	87114000	5124096	5029888	127	-	-	-	-
+# counts	official	cold	mixed tree, 100 files, 5 MiB	2	8167019	101826000	5124096	5029888	125	-	-	-	-
+# counts	official	cold	mixed tree, 100 files, 5 MiB	3	8724861	92286000	5124096	5029888	130	-	-	-	-
+# counts	example	cold	4 x 16 MiB	0	11887472	292969000	35266560	67108864	733	-	-	-	-
+# counts	example	cold	4 x 16 MiB	1	12391064	325938000	29040640	67108864	777	-	-	-	-
+# counts	example	cold	4 x 16 MiB	2	11807043	316259000	26677248	67108864	754	-	-	-	-
+# counts	example	cold	4 x 16 MiB	3	12830016	346547000	26415104	67108864	824	-	-	-	-
+# counts	official	cold	4 x 16 MiB	0	19427029	432176000	13459456	67108864	436	-	-	-	-
+# counts	official	cold	4 x 16 MiB	1	21615757	553611000	13021184	67108864	530	-	-	-	-
+# counts	official	cold	4 x 16 MiB	2	20025731	488931000	12382208	67108864	444	-	-	-	-
+# counts	official	cold	4 x 16 MiB	3	20329783	480694000	11644928	67108864	465	-	-	-	-
+contender	scenario	use_case	point	unit	ns/units	start ms	cpu ns	energy nJ	core counts
+example	warm	b3sum	4 KiB	B	629592/4096,602102/4096,596012/4096,612272/4096	245,802,1380,1956	633000,610000,610000,626000	0,90286255,0,0	-
+official	warm	b3sum	4 KiB	B	1744577/4096,1670526/4096,1734946/4096,1685706/4096	246,800,1381,1955	8449000,9312000,9225000,8486000	289611816,198242188,200180053,204437255	-
+example	warm	b3sum	1 MiB	B	726322/1048576,746173/1048576,859003/1048576,696643/1048576	250,802,1385,1957	1718000,1864000,2215000,1707000	95153808,0,92025757,0	-
+official	warm	b3sum	1 MiB	B	1918307/1048576,1829767/1048576,1854566/1048576,1839176/1048576	248,803,1383,1958	19704000,15963000,17066000,17470000	187866211,185119628,185867310,182922363	-
+example	warm	b3sum	16 MiB	B	1136524/16777216,1847937/16777216,2059657/16777216,1824506/16777216	251,809,1387,1964	6894000,14872000,19955000,14963000	119232178,219116211,177780151,224960327	-
+official	warm	b3sum	16 MiB	B	2223408/16777216,3027311/16777216,2671850/16777216,2748900/16777216	252,806,1389,1961	28272000,34949000,26299000,30328000	303207398,282058716,295272827,289764405	-
+example	warm	b3sum	100 x 16 KiB	B	2816550/1638400,2657339/1638400,2896850/1638400,2902601/1638400	257,811,1395,1966	21043000,14649000,16329000,32939000	275909424,202651977,282165527,294677734	-
+official	warm	b3sum	100 x 16 KiB	B	2481249/1638400,2510379/1638400,2425438/1638400,2441109/1638400	255,814,1392,1969	9756000,9927000,9661000,10468000	236740112,287460328,311172486,302749634	-
+example	warm	b3sum	100 x 16 KiB, a process each	B	50145378/1638400,51159457/1638400,50077449/1638400,50723556/1638400	260,980,1398,2136	51398000,52071000,51314000,51993000	4450164795,4464431763,4341903686,4407562255	-
+official	warm	b3sum	100 x 16 KiB, a process each	B	160272374/1638400,160601825/1638400,162296435/1638400,162526065/1638400	312,817,1450,1972	845722000,845824000,853270000,856959000	15937072754,16051345825,16177810669,16232589722	-
+example	warm	b3sum	mixed tree, 100 files, 5 MiB	B	2715180/4937728,2967180/4937728,3046770/4937728,2840500/4937728	479,1033,1619,2190	12818000,19522000,37146000,23449000	373367309,261672973,378189087,266754150	-
+official	warm	b3sum	mixed tree, 100 files, 5 MiB	B	3829734/4937728,3895174/4937728,4230525/4937728,3885304/4937728	475,1036,1615,2192	65939000,73248000,78375000,70436000	408264160,437057495,402603150,438552857	-
+example	warm	b3sum	4 x 16 MiB	B	2422069/67108864,3813534/67108864,4018765/67108864,4007664/67108864	483,1052,1627,2207	19321000,49414000,22470000,55331000	193634033,482208252,410995483,478179932	-
+official	warm	b3sum	4 x 16 MiB	B	3423392/67108864,6235302/67108864,5593840/67108864,6009511/67108864	486,1045,1631,2201	59915000,94355000,88234000,89095000	493453980,634460450,658630371,641937256	-
+example	cold	b3sum	4 KiB	B	687953/4096,655863/4096,893603/4096,642653/4096	489,1057,1636,2213	1026000,905000,1328000,981000	0,0,0,0	-
+official	cold	b3sum	4 KiB	B	1868686/4096,1721856/4096,1825326/4096,1788866/4096	490,1056,1637,2212	9097000,8360000,8592000,9661000	112243653,199111938,91720581,187805175	-
+example	cold	b3sum	1 MiB	B	1291455/1048576,1185444/1048576,1301585/1048576,1178604/1048576	495,1058,1642,2214	5605000,5711000,5316000,5768000	108413697,190017700,110565186,191238404	-
+official	cold	b3sum	1 MiB	B	2274178/1048576,2236967/1048576,2337539/1048576,2149488/1048576	492,1059,1639,2215	21354000,24116000,26435000,23883000	280258178,186309815,189514160,187118530	-
+example	cold	b3sum	16 MiB	B	4876877/16777216,4760597/16777216,4651647/16777216,4830648/16777216	496,1070,1644,2226	92954000,100515000,110752000,111516000	520278931,532440185,506774902,411163330	-
+official	cold	b3sum	16 MiB	B	5770101/16777216,5922981/16777216,5433530/16777216,6640414/16777216	502,1063,1650,2219	107844000,119472000,83481000,146561000	617050171,632965088,598617554,744354248	-
+example	cold	b3sum	100 x 16 KiB	B	3283431/1638400,3552803/1638400,3543482/1638400,3155781/1638400	517,1075,1667,2232	23455000,26775000,26913000,45468000	275329590,393417359,361526489,287246705	-
+official	cold	b3sum	100 x 16 KiB	B	7982888/1638400,10336267/1638400,10364327/1638400,10059056/1638400	509,1079,1656,2235	9049000,10526000,9211000,10767000	675354004,915878296,912475586,814010620	-
+example	cold	b3sum	100 x 16 KiB, a process each	B	59111206/1638400,58808140/1638400,59659795/1638400,59130570/1638400	521,1260,1671,2416	86618000,88760000,88827000,88947000	5413696289,5293350220,5446441651,5477401733	-
+official	cold	b3sum	100 x 16 KiB, a process each	B	165634466/1638400,167650576/1638400,167513718/1638400,167168926/1638400	583,1090,1733,2246	844625000,849237000,869165000,865214000	16479446411,16596969604,16600036621,16613265992	-
+example	cold	b3sum	mixed tree, 100 files, 5 MiB	B	4478646/4937728,3584283/4937728,3874184/4937728,4157655/4937728	759,1322,1913,2478	51739000,36591000,29445000,42282000	387390137,382965088,393630981,370086670	-
+official	cold	b3sum	mixed tree, 100 files, 5 MiB	B	7422486/4937728,11950623/4937728,8167019/4937728,8724861/4937728	751,1326,1904,2483	74344000,87114000,101826000,92286000	735961914,1177169799,840530395,909912109	-
+example	cold	b3sum	4 x 16 MiB	B	11887472/67108864,12391064/67108864,11807043/67108864,12830016/67108864	766,1368,1920,2520	292969000,325938000,316259000,346547000	1327362060,1431106568,1341110230,1413345337	-
+official	cold	b3sum	4 x 16 MiB	B	19427029/67108864,21615757/67108864,20025731/67108864,20329783/67108864	780,1342,1935,2496	432176000,553611000,488931000,480694000	2081161499,2402099609,2178222657,2296264648	-

@@ -1,0 +1,24 @@
+{
+  "example": "/root/blake3-servil-c-b3sum/build/b3sum-c",
+  "example_sha256": "c2b872bbde36094f3b4b561e59177ee1f565c86e1ced17e1fce537b13c1ca608",
+  "official": "/root/results/released-cli-v7/bin/b3sum-official-1.8.2-L0",
+  "bench_checkout": "/root/bench-hashes-round-152",
+  "bench_commit": "d6ce88f6537a7fbd11ab9533853818b4adaf4824",
+  "command": [
+    "cargo",
+    "run",
+    "--release",
+    "--manifest-path",
+    "/root/bench-hashes-round-152/Cargo.toml",
+    "--",
+    "b3sum",
+    "--rounds",
+    "4",
+    "--quick",
+    "example=/root/blake3-servil-c-b3sum/build/b3sum-c",
+    "official=/root/results/released-cli-v7/bin/b3sum-official-1.8.2-L0"
+  ],
+  "quick": true,
+  "rounds": 4,
+  "note": "Timing and statistics are owned by bench-hashes b3sum, not this wrapper."
+}

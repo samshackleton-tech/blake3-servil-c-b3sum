@@ -1,0 +1,15 @@
+git submodule update --init --recursive
+cargo cinstall --release --manifest-path /root/blake3-servil-c-b3sum/vendor/blake3-servil/capi/Cargo.toml --target-dir /root/blake3-servil-c-b3sum/build/cargo --prefix /root/blake3-servil-c-b3sum/build/servil --libdir lib
+note: link against the following native artifacts when linking against this static library. The order and any duplication can be significant on some platforms
+
+    Finished `release` profile [optimized] target(s) in 0.04s
+  Installing pkg-config file
+  Installing header file
+  Installing static library
+  Installing shared library
+cc -std=c11 -O2 -Wall -Wextra -Werror -pedantic src/b3sum.c -o /root/blake3-servil-c-b3sum/build/b3sum-c -I/root/blake3-servil-c-b3sum/build/servil/include -L/root/blake3-servil-c-b3sum/build/servil/lib -lb3_servil -pthread -Wl,-rpath,'$ORIGIN/servil/lib'
+cc -std=c11 -O2 -Wall -Wextra -Werror -pedantic src/b3sum.c -o /root/blake3-servil-c-b3sum/build/b3sum-c-static -I/root/blake3-servil-c-b3sum/build/servil/include -L/root/blake3-servil-c-b3sum/build/servil/lib -Wl,-Bstatic -lb3_servil -Wl,-Bdynamic -L/root/blake3-servil-c-b3sum/build/servil/lib -lgcc_s -lutil -lrt -lpthread -lm -ldl -lc -pthread
+python3 tests/test_b3sum.py --bin /root/blake3-servil-c-b3sum/build/b3sum-c --static-bin /root/blake3-servil-c-b3sum/build/b3sum-c-static --official /root/results/released-cli-v7/bin/b3sum-official-1.8.2-L0
+shared: 38 checks passed
+static: 38 checks passed
+all 76 checks passed

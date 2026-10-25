@@ -104,9 +104,13 @@ python3 benchmark/benchmark.py \
 The wrapper records the command, exact binary SHA-256, bench checkout and
 commit. `bench-hashes` writes the samples, statistics, map and result files.
 `--quick` selects its smaller workload; omit it for the full workload. The
-initial public result in this repository is a quick diagnostic screen, not a
-release or cross-machine claim. Run native benchmarks on a quiet EPYC9255
-or another explicitly chosen host, not on a shared development laptop.
+initial public result is a quick diagnostic screen, not a release or
+cross-machine claim: [EPYC9255 quick benchmark and correctness record](results/epyc-20261025-quick/RESULT.md).
+It shows the current CLI/file-worker design is slower than official in most
+cells, with one warm many-small-files exception. The benchmark includes
+process startup, filesystem traversal and the C wrapper; it is not a
+kernel-only comparison. Run native benchmarks on a quiet EPYC9255 or
+another explicitly chosen host, not on a shared development laptop.
 
 ## C API lessons
 
