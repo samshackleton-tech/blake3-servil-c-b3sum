@@ -229,7 +229,7 @@ static int hash_fd(int fd, const Options *options, b3_hasher *hasher) {
         }
         void *mapping = mmap(NULL, (size_t)st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
         if (mapping != MAP_FAILED) {
-            (void)madvise(mapping, (size_t)st.st_size, MADV_SEQUENTIAL);
+            (void)posix_madvise(mapping, (size_t)st.st_size, POSIX_MADV_SEQUENTIAL);
             if (options->library_mt) {
                 b3_hasher_update_multithreaded(hasher, mapping, (size_t)st.st_size);
             } else {
