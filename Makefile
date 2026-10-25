@@ -19,7 +19,7 @@ $(BIN): src/b3sum.c | servil
 	$(CC) $(CFLAGS) $< -o $@ $(shell $(PKG) pkg-config --cflags --libs b3_servil) -pthread -Wl,-rpath,'$$ORIGIN/servil/lib'
 
 $(STATIC_BIN): src/b3sum.c | servil
-	$(CC) $(CFLAGS) $< -o $@ $(shell $(PKG) pkg-config --static --cflags --libs b3_servil) -pthread
+	$(CC) $(CFLAGS) $< -o $@ $(shell $(PKG) pkg-config --cflags b3_servil) -L$(PREFIX)/lib -Wl,-Bstatic -lb3_servil -Wl,-Bdynamic $(filter-out -lb3_servil,$(shell $(PKG) pkg-config --static --libs b3_servil)) -pthread
 
 OFFICIAL_B3SUM ?= b3sum
 
