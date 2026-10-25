@@ -21,8 +21,10 @@ $(BIN): src/b3sum.c | servil
 $(STATIC_BIN): src/b3sum.c | servil
 	$(CC) $(CFLAGS) $< -o $@ $(shell $(PKG) pkg-config --static --cflags --libs b3_servil) -pthread
 
+OFFICIAL_B3SUM ?= b3sum
+
 test: all
-	python3 tests/test_b3sum.py --bin $(BIN) --static-bin $(STATIC_BIN)
+	python3 tests/test_b3sum.py --bin $(BIN) --static-bin $(STATIC_BIN) --official $(OFFICIAL_B3SUM)
 
 benchmark: all
 	python3 benchmark/benchmark.py --bin $(BIN) --bench-dir $(BENCH_HASHES_DIR) --quick --rounds 4

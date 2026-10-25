@@ -72,6 +72,8 @@ cc -std=c11 -O2 -Wall -Wextra -Werror -pedantic src/b3sum.c \
 
 ```sh
 make test
+# or, if the independent b3sum is elsewhere:
+make test OFFICIAL_B3SUM=/path/to/b3sum
 ```
 
 The test script runs the shared and static executables independently and
