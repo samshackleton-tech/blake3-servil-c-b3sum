@@ -8,7 +8,7 @@ import shutil
 import subprocess
 import tempfile
 
-OFFICIAL = shutil.which("b3sum")
+OFFICIAL = os.environ.get("B3SUM_OFFICIAL") or shutil.which("b3sum")
 
 
 def call(argv, data=None, env=None, timeout=45):
@@ -141,10 +141,14 @@ def suite(label, binary):
 
 
 def main():
+    global OFFICIAL
     parser = argparse.ArgumentParser()
     parser.add_argument("--bin", required=True)
     parser.add_argument("--static-bin", required=True)
+    parser.add_argument("--official", default=OFFICIAL,
+                        help="independent reference b3sum (default: B3SUM_OFFICIAL or PATH)")
     args = parser.parse_args()
+    OFFICIAL = args.official
     binaries = [("shared", args.bin), ("static", args.static_bin)]
     for _, path in binaries:
         assert Path(path).is_file(), path
