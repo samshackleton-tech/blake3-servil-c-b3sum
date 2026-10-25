@@ -103,9 +103,11 @@ def suite(label, binary):
         want = good([OFFICIAL, "--check", str(normal)]).decode()
         assert got == want, (label, got, want)
         checks += 1
-        got = good([binary, "--check", "--tag", str(tagged)]).decode()
-        want = good([OFFICIAL, "--check", "--tag", str(tagged)]).decode()
+        got = good([binary, "--check", str(tagged)]).decode()
+        want = good([OFFICIAL, "--check", str(tagged)]).decode()
         assert got == want, (label, got, want)
+        checks += 1
+        expect_failure([binary, "--check", "--tag", str(tagged)])
         checks += 1
         assert good([binary, "--check", "--quiet", str(normal)]) == b""
         checks += 1

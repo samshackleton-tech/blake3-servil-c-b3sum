@@ -559,6 +559,10 @@ static int parse_options(int argc, char **argv, Options *options, int *first) {
         fprintf(stderr, PROGRAM ": --no-names cannot be used with --check\n");
         return 2;
     }
+    if (options->tag && options->check) {
+        fprintf(stderr, PROGRAM ": --tag cannot be used with --check\n");
+        return 2;
+    }
     if (options->check && (options->length != 32 || options->seek != 0)) {
         fprintf(stderr, PROGRAM ": --check requires the default 32-byte output at offset zero\n");
         return 2;
