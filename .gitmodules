@@ -1,0 +1,3 @@
+[submodule "vendor/blake3-servil"]
+	path = vendor/blake3-servil
+	url = https://github.com/johnservil/BLAKE3.git
