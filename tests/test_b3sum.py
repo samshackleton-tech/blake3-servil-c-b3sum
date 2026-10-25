@@ -67,7 +67,13 @@ def suite(label, binary):
         own([str(spaces)])
         own([str(empty)])
         own(file_args)
-        own([str(root)])
+        # Official b3sum 1.8.2 rejects a directory argument. Exercise the
+        # example's recursive expansion against the independent file hashes.
+        expanded = [str(empty), str(newline), str(payload), str(plain), str(spaces)]
+        got = good([binary, str(root)])
+        want = good([OFFICIAL, *expanded])
+        assert got == want, (label, "directory expansion", got[:200], want[:200])
+        checks += 1
         own([], b"abc\0binary\xff")
         own(["--no-names", str(plain)])
         own(["--tag", str(spaces)])
